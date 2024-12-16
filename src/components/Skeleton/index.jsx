@@ -10,6 +10,9 @@ function Skeleton({ count }) {
             <div className="skeleton-img skeleton-animation"></div>
             <div className="skeleton-title skeleton-animation"></div>
             <div className="skeleton-title skeleton-animation"></div>
+            <div className="skeleton-title skeleton-animation"></div>
+            <div className="skeleton-title skeleton-animation"></div>
+            <div className="skeleton-title skeleton-animation"></div>
           </div>
         ))}
     </div>

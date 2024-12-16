@@ -1,7 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+}
+body {
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(99, 79, 215, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
 }
 @tailwind base;
 @tailwind components;

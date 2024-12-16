@@ -7,6 +7,7 @@ function Products() {
   const [users, setUsers] = useState(null);
   const [loading, setLoading] = useState(false);
   const [offset, setOffset] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
 
   const perPageCount = 4;
   useEffect(() => {
@@ -19,6 +20,10 @@ function Products() {
       })
       .then((res) => {
         setUsers(res.data.users);
+        if (res.data.length > 0) {
+        } else {
+          setHasMore(false);
+        }
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
@@ -33,27 +38,41 @@ function Products() {
         {users?.map((user) => (
           <div key={user.id} className="card">
             <img src={user.image} alt="" />
-            <h3>
-              {user.firstName} {user.lastName}
-            </h3>
-            <p>Age: {user.age}</p>
-            <p>Birth Date: {user.birthDate}</p>
-            <p>Gender: {user.gender}</p>
-            <p>{user.email}</p>
-            <p>{user.phone}</p>
-            <br />
-            <br />
-            <button className="btn">Follow</button>
+            <div className="text-wrap">
+              <h2 className="font-semibold text-lg">
+                {user.firstName} {user.lastName}
+              </h2>
+              <p>
+                <b>Age:</b> {user.age}
+              </p>
+              <p>
+                <b>Gender:</b> {user.gender}
+              </p>
+              <p>
+                <b>Birth Date:</b> {user.birthDate}
+              </p>
+              <p>
+                <b>Phone:</b> {user.phone}
+              </p>
+              <p>{user.email}</p>
+              <br />
+              <button className="btn">Follow</button>
+            </div>
           </div>
         ))}
       </div>
       {
-        loading && <Skeleton count={perPageCount} />
+        loading && hasMore && <Skeleton count={perPageCount} />
         // <div className="loading">
         //   <div className="loader"></div>
         // </div>
       }
-      <button onClick={() => setOffset((p) => p + 1)} className="btn">
+      {/* {
+        !hasMore(
+          
+        )
+      } */}
+      <button onClick={() => setOffset((p) => p + 1)} className="btn btn-see">
         See more
       </button>
     </div>
